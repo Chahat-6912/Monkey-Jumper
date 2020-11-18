@@ -57,6 +57,10 @@ background("white");
       bg.x = bg.width/2;
     }
     
+    if(monkey.isTouching(bannanasGroup)){
+      bannanasGroup.destroyEach();
+    }
+    
     //jump when the space key is pressed
     if(keyDown("space")&& monkey.y >= 100) {
         monkey.velocityY = -12;
@@ -105,10 +109,12 @@ background("white");
   
   drawSprites();
   
-  textSize (25)
-  fill("white")
-  survivalTime = Math.ceil(frameCount/frameRate())
-  text ("Survival Time - "+ survivalTime, 400, 50)
+  if(gameState == PLAY){
+    textSize (25)
+    fill("white")
+    survivalTime = Math.ceil(frameCount/frameRate())
+    text ("Survival Time - "+ survivalTime, 400, 50)
+    }
 }
 
 
